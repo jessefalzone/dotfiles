@@ -101,10 +101,11 @@ function parse_git_branch {
 
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
+GREEN="\[\033[1;32m\]"
+BLUE="\[\033[1;34m\]"
 WHITE="\[\033[0;47;m\]"
 
-PS1="$GREEN\u@\h \w$YELLOW \$(parse_git_branch)$GREEN $ $WHITE"
+PS1="$BLUE\u@\h \w$GREEN \$(parse_git_branch)$BLUE$ $WHITE"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
