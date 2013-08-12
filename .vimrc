@@ -1,4 +1,5 @@
-"Not compatible with vi set nocompatible
+"Not compatible with vi
+set nocompatible
 
 " Filetype Stuff
 filetype on
@@ -53,7 +54,10 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "color wombat256mod
 "color tango2
 color ir_black
-highlight LineNr ctermfg=blue
+"highlight LineNr ctermfg=blue
+
+"tab background color
+hi TabLineFill term=bold cterm=bold ctermbg=black
 
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
@@ -84,3 +88,10 @@ inoremap <Up> <C-o>gk
 
 "map jk to escape
 :imap jk <Esc>
+:vmap ;; <Esc>
+
+"split windows
+nmap <C-w>v :vsplit<CR>
+nmap <C-w>s :split<CR>
+nmap <C-w>o :only<CR>
+nmap <C-w>c :close<CR>
