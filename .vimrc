@@ -1,5 +1,4 @@
-"Not compatible with vi
-set nocompatible
+"Not compatible with vi set nocompatible
 
 " Filetype Stuff
 filetype on
@@ -39,6 +38,18 @@ au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-te
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
+"Highlight current line number
+set cursorline
+hi clear CursorLine
+augroup CLClear
+  autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+hi CursorLineNR cterm=bold
+augroup CLNRSet
+  autocmd! ColorScheme * hi CursorLineNR cterm=bold
+augroup END
+
 " Highlight trailing whitespace
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
@@ -47,7 +58,6 @@ autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%100v.*/
 highlight LineLengthError ctermbg=black guibg=black
 autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
-
 " Set up highlight group & retain through colorscheme changes
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -55,7 +65,6 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 "color wombat256mod
 color tango2
 highlight LineNr ctermfg=blue
-set cursorline
 
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
@@ -71,3 +80,18 @@ au BufNewFile,BufRead *.ejs set filetype=html
 
 "command to remove all trailing whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+"make cursor move as expected with wrapped lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+"caps lock to escape insert mode
+:imap ;; <Esc>
