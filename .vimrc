@@ -62,14 +62,23 @@ hi TabLineFill term=bold cterm=bold ctermbg=black
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
 map <C-l> <ESC>:tabn<CR>
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
 map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
 set guioptions-=T
 set ofu=syntaxcomplete#Complete
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 au BufNewFile,BufRead *.ejs set filetype=html
+
+"only open nerdtree if vim is opened without args
+function! StartUp()
+  if 0 == argc()
+    NERDTree
+  end
+endfunction
+autocmd VimEnter * call StartUp()
+autocmd BufEnter * NERDTreeMirror
 
 "command to remove all trailing whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
