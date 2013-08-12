@@ -93,5 +93,5 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-"caps lock to escape insert mode
+"map ;; to escape
 :imap ;; <Esc>
