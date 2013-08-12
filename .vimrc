@@ -14,7 +14,7 @@ set hidden
 "Don't update display when executing macros
 set lazyredraw
 
-"Let yourself know what mode your'e in
+"Let yourself know what mode you're in
 set showmode
 
 "set search scan to wrap around file
@@ -38,18 +38,6 @@ au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-te
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
-"Highlight current line number
-set cursorline
-hi clear CursorLine
-augroup CLClear
-  autocmd! ColorScheme * hi clear CursorLine
-augroup END
-
-hi CursorLineNR cterm=bold
-augroup CLNRSet
-  autocmd! ColorScheme * hi CursorLineNR cterm=bold
-augroup END
-
 " Highlight trailing whitespace
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
@@ -63,7 +51,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "color wombat256mod
-color tango2
+"color tango2
+color ir_black
 highlight LineNr ctermfg=blue
 
 map <C-n> <ESC>:tabnew<RETURN>
@@ -93,5 +82,5 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-"map ;; to escape
-:imap ;; <Esc>
+"map jk to escape
+:imap jk <Esc>
