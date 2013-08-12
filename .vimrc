@@ -30,6 +30,15 @@ set history=100
 "set tabs to only be 2 spaces
 set tabstop=2 shiftwidth=2 expandtab
 
+"set line numbers
+set number
+
+"set cursor options
+au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"    
+au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+
 " Highlight trailing whitespace
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
@@ -45,6 +54,8 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 "color wombat256mod
 color tango2
+highlight LineNr ctermfg=blue
+set cursorline
 
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
