@@ -58,6 +58,8 @@ color ir_black
 
 "tab background color
 hi TabLineFill term=bold cterm=bold ctermbg=black
+hi TabLineSel ctermfg=white ctermbg=blue
+hi TabLine ctermfg=white ctermbg=black
 
 map <C-n> <ESC>:tabnew<RETURN>
 map <C-h> <ESC>:tabp<CR>
