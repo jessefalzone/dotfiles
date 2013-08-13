@@ -9,7 +9,6 @@ filetype indent on
 "Turn on syntax highlighting
 syntax on
 
-"set hidden
 set hidden
 
 "Don't update display when executing macros
@@ -20,6 +19,8 @@ set showmode
 
 "set search scan to wrap around file
 set wrapscan
+
+set backspace=indent,eol,start
 
 "make command line two lines high
 set ch=2
@@ -34,7 +35,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set number
 
 "set cursor options
-au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"    
+au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
@@ -51,10 +52,9 @@ autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-"color wombat256mod
-"color tango2
 color ir_black
 "highlight LineNr ctermfg=blue
+"highlight LineNr ctermbg=black
 
 "tab background color
 hi TabLineFill term=bold cterm=bold ctermbg=black
@@ -97,9 +97,8 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-"map jk to escape
-:imap jk <Esc>
-:vmap ;; <Esc>
+"map jj to escape
+noremap! jj <Esc>
 
 "split windows
 nmap <C-w>v :vsplit<CR>
