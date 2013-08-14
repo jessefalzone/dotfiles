@@ -12,4 +12,4 @@ ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/bashrc ~/.bashrc
 
-echo "Done."
+echo "Install complete."
