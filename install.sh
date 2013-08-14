@@ -2,7 +2,7 @@
 
 echo "Deleting the old files..."
 rm ~/.vimrc
-rm ~/.vim
+rm -R ~/.vim
 rm ~/.tmux.conf
 rm ~/.bashrc
 
