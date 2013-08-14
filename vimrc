@@ -71,8 +71,6 @@ map <C-l> <ESC>:tabn<CR>
 "autocmd BufEnter * NERDTreeMirror
 map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
 set guioptions-=T
-set ofu=syntaxcomplete#Complete
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
@@ -83,7 +81,11 @@ function! StartUp()
   end
 endfunction
 autocmd VimEnter * call StartUp()
-autocmd BufEnter * NERDTreeMirror
+autocmd BufWinEnter * NERDTreeMirror
+"autocmd BufEnter * NERDTreeMirror
+
+"close nerdtree when quitting a file
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "command to remove all trailing whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -109,8 +111,8 @@ nmap <C-w>s :split<CR>
 nmap <C-w>o :only<CR>
 nmap <C-w>c :close<CR>
 
-"" Searching
-set hlsearch    " highlight matches
+" Searching
+"set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searches are case insensitive...
 set smartcase   " ... unless they contain at least one capital letter
