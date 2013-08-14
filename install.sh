@@ -6,7 +6,7 @@ rm -R ~/.vim
 rm ~/.tmux.conf
 rm ~/.bashrc
 
-echo "Symlinking files..."
+echo "Symlinking new files..."
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/vim ~/.vim
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
