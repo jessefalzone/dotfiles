@@ -1,17 +1,14 @@
 # dotfiles
-========
 
 Vim, tmux, bash
 
 ## Installation
-========
 
     cd ~
     git clone https://github.com/jessefalzone/dotfiles.git
     bash install.sh
 
 ## Usage
-========
 
 ### Code
 * `<Esc>` has been remapped to `jj`.
