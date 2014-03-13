@@ -72,10 +72,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -92,7 +88,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 function parse_git_branch {
  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -103,11 +99,15 @@ RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
 GREEN="\[\033[1;32m\]"
 BLUE="\[\033[1;34m\]"
-WHITE="\[\033[0;47;m\]"
+WHITE="\[\033[0;40;m\]"
 
 PS1="$BLUE\u@\h \w$GREEN \$(parse_git_branch)$BLUE$ $WHITE"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 JAVA_HOME=/usr/lib/jvm/java-6-oracle/
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
