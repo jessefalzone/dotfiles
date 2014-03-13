@@ -10,3 +10,7 @@ alias c='clear'
 #alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+# git
+alias gs='git status'
+alias gl='git log'
