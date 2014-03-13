@@ -4,6 +4,12 @@ execute pathogen#infect()
 "Not compatible with vi
 set nocompatible
 
+"gui options
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L
+:set guifont=Menlo:h14
+":set transparency=25
+
 " Filetype Stuff
 filetype on
 filetype plugin on
@@ -38,10 +44,10 @@ set tabstop=2 shiftwidth=2 expandtab
 set number
 
 "set cursor options
-au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+"au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+"au VimEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 
 " Highlight trailing whitespace
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -72,8 +78,12 @@ map <C-l> <ESC>:tabn<CR>
 
 "autocmd VimEnter * NERDTree
 "autocmd BufEnter * NERDTreeMirror
-map <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
+"map <silent> <C-d> :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <silent> <C-d> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
 set guioptions-=T
+
+"close nerdtree after opening a file
+let NERDTreeQuitOnOpen = 1
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
@@ -85,7 +95,7 @@ function! StartUp()
 endfunction
 autocmd VimEnter * call StartUp()
 autocmd BufWinEnter * NERDTreeMirror
-"autocmd BufEnter * NERDTreeMirror
+autocmd BufEnter * NERDTreeMirror
 
 "close nerdtree when quitting a file
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
