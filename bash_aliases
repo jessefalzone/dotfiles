@@ -7,6 +7,6 @@ alias l='ls -CF'
 alias c='clear'
 
 # interactive mode (confirm overwriting files)
-alias rm='rm -i'
+#alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
